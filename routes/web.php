@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Admin\ProductCategoryController as AdminProductCategoryController;
+use App\Http\Controllers\ProductCategoryController;
 use App\Http\Controllers\TestController;
 use Illuminate\Support\Facades\Route;
 use PHPUnit\Event\Code\Test;
@@ -34,7 +36,8 @@ Route::get('user/index', function (){
 Route::get('test/index' , [TestController::class ,'index']);
 Route::get('test/detail' , [TestController::class ,'detail']); 
 
-//muon no tu dong thi phai cho vao {{}}
+//muon no tu dong thi phai cho vao {{}} 
+//Router dynamic paramter
 Route::get('user/detail/{id?}/{test}' , [TestController::class,'show']); 
 
 // Router  return view 
@@ -44,4 +47,11 @@ Route::get('/', function(){
 
 Route::get('list_user' , function(){
     return view('user.list_user');
+});
+
+Route::get('list_category' , [ProductCategoryController::class, 'index']);
+Route::get('admin/list_category' , [AdminProductCategoryController::class, 'index']);
+
+Route::get('list_user_blade' , function(){
+    return view('user.list_user_blade');
 });

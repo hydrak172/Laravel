@@ -17,4 +17,6 @@ class TestController extends Controller
     public function show($id,$test){
         return "<h1>Show $id $test of Test Controller</h1>";
     }
+
+
 }
