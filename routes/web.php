@@ -55,11 +55,46 @@ Route::get('admin/list_category' , [AdminProductCategoryController::class, 'inde
 
 Route::get('list_user_blade' ,[ProductController::class,'index']); 
 Route::get('home' , function(){
-    return view('home');
+    return view('client.pages.home');
 });
-Route::get('about_us' , function(){
-    return view('about_us');
+Route::get('blog_details' , function(){
+    return view('client.pages.blog-details');
+});
+Route::get('blog' , function(){
+    return view('client.pages.blog');
+});
+Route::get('check_out' , function(){
+    return view('client.pages.check-out');
 });
 Route::get('contact' , function(){
-    return view('contact');
+    return view('client.pages.contact');
 });
+Route::get('product_detail' , function(){
+    return view('client.pages.product-detail');
+});
+Route::get('product_list' , function(){
+    return view('client.pages.product-list');
+});
+
+Route::get('shopping_cart' , function(){
+    return view('client.pages.shopping-cart');
+});
+
+Route::get('master' , function(){
+    return view('admin.layout.master');
+});
+
+Route::get('admin' , function(){
+    return view('admin.pages.dashboard');
+});
+Route::get('admin/user' , function(){
+    return view('admin.pages.user');
+});
+Route::get('admin/blog' , function(){
+    return view('admin.pages.blog');
+});
+//kien thuc cu phap name 
+Route::get('admin/product' , function(){
+    return view('admin.pages.blog');
+})->name('admin.product');
+

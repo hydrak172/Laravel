@@ -1,86 +1,114 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zxx">
+
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="Ogani Template">
+    <meta name="keywords" content="Ogani, unica, creative, html">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
-    <title>@yield('title')</title>
-    <style>
-        *{
-            margin: 0 auto;
-            box-sizing: border-box;
-        }
-        .header{
-            background-color: purple;
-            color: chartreuse;
-            padding: 20px;
-            text-align: center;
-        }
-        .nav{
-            background-color: pink;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            overflow: hidden;
-            padding: 20px;
-        }
-        section .sidebar{
-            width: 400px;
-            height: 150px;
-            background: #b1b1b1;
-            float: left;
-        }
-        section .content{
-            width: 1520px;
-            height: 150px;
-            border: 1px solid #333;
-            padding: 10px;
-            float: right;
-        }
-            /* Bỏ floats sau khi tạo cột */
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Ogani | Template</title>
 
-        section:after {
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;900&display=swap" rel="stylesheet">
 
-            content: "";
-
-            display: table;
-
-            clear: both;
-
-        }
-        footer .footer {
-
-            background-color: #777;
-
-            padding: 10px;
-
-            text-align: center;
-
-            color: white;
-
-        }
-    </style>
+    <!-- Css Styles -->
+    <link rel="stylesheet" href="{{ asset('client/css/bootstrap.min.css')}}" type="text/css">
+    <link rel="stylesheet" href="{{ asset('client/css/font-awesome.min.css')}}" type="text/css">
+    <link rel="stylesheet" href="{{ asset('client/css/elegant-icons.css')}}" type="text/css">
+    <link rel="stylesheet" href="{{ asset('client/css/nice-select.css')}}" type="text/css">
+    <link rel="stylesheet" href="{{ asset('client/css/jquery-ui.min.css')}}" type="text/css">
+    <link rel="stylesheet" href="{{ asset('client/css/owl.carousel.min.css')}}" type="text/css">
+    <link rel="stylesheet" href="{{ asset('client/css/slicknav.min.css')}}" type="text/css">
+    <link rel="stylesheet" href="{{ asset('client/css/style.css')}}" type="text/css">
 </head>
+
 <body>
-    @include('client.pages.header')
-    <nav>   
-        <div class="nav">
-            Navigation
+    <!-- Page Preloder -->
+    <div id="preloder">
+        <div class="loader"></div>
+    </div>
+
+    <!-- Humberger Begin -->
+    <div class="humberger__menu__overlay"></div>
+    <div class="humberger__menu__wrapper">
+        <div class="humberger__menu__logo">
+            <a href="#"><img src="img/logo.png" alt=""></a>
         </div>
-    </nav>
-    <section>
-        <aside class="sidebar"> 
-            {{-- @yield('sidebar') --}}
-            @section('sidebar')
-                <h2>Sidebar</h2>
-            @show
-        </aside> 
-        <div class="content">
-            @yield('content')
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi, voluptas nemo perspiciatis eaque veritatis obcaecati. Blanditiis quas delectus dolores numquam!</p>
+        <div class="humberger__menu__cart">
+            <ul>
+                <li><a href="#"><i class="fa fa-heart"></i> <span>1</span></a></li>
+                <li><a href="#"><i class="fa fa-shopping-bag"></i> <span>3</span></a></li>
+            </ul>
+            <div class="header__cart__price">item: <span>$150.00</span></div>
         </div>
-    </section>
+        <div class="humberger__menu__widget">
+            <div class="header__top__right__language">
+                <img src="img/language.png" alt="">
+                <div>English</div>
+                <span class="arrow_carrot-down"></span>
+                <ul>
+                    <li><a href="#">Spanis</a></li>
+                    <li><a href="#">English</a></li>
+                </ul>
+            </div>
+            <div class="header__top__right__auth">
+                <a href="#"><i class="fa fa-user"></i> Login</a>
+            </div>
+        </div>
+        <nav class="humberger__menu__nav mobile-menu">
+            <ul>
+                <li class="active"><a href="./index.html">Home</a></li>
+                <li><a href="./shop-grid.html">Shop</a></li>
+                <li><a href="#">Pages</a>
+                    <ul class="header__menu__dropdown">
+                        <li><a href="./shop-details.html">Shop Details</a></li>
+                        <li><a href="./shoping-cart.html">Shoping Cart</a></li>
+                        <li><a href="./checkout.html">Check Out</a></li>
+                        <li><a href="./blog-details.html">Blog Details</a></li>
+                    </ul>
+                </li>
+                <li><a href="./blog">Blog</a></li>
+                <li><a href="./contact">Contact</a></li>
+            </ul>
+        </nav>
+        <div id="mobile-menu-wrap"></div>
+        <div class="header__top__right__social">
+            <a href="#"><i class="fa fa-facebook"></i></a>
+            <a href="#"><i class="fa fa-twitter"></i></a>
+            <a href="#"><i class="fa fa-linkedin"></i></a>
+            <a href="#"><i class="fa fa-pinterest-p"></i></a>
+        </div>
+        <div class="humberger__menu__contact">
+            <ul>
+                <li><i class="fa fa-envelope"></i> hello@colorlib.com</li>
+                <li>Free Shipping for all Order of $99</li>
+            </ul>
+        </div>
+    </div>
+    <!-- Humberger End -->
+
+    <!-- Header Section Begin -->
+        @include('client.pages.header')
+    <!-- Header Section End -->
+
+        @yield('content')
+
+    <!-- Footer Section Begin -->
     @include('client.pages.footer')
+    <!-- Footer Section End -->
+
+    <!-- Js Plugins -->
+    <script src="{{ asset('client/js/jquery-3.3.1.min.js')}}"></script>
+    <script src="{{ asset('client/js/bootstrap.min.js')}}"></script>
+    <script src="{{ asset('client/js/jquery.nice-select.min.js')}}"></script>
+    <script src="{{ asset('client/js/jquery-ui.min.js')}}"></script>
+    <script src="{{ asset('client/js/jquery.slicknav.js')}}"></script>
+    <script src="{{ asset('client/js/mixitup.min.js')}}"></script>
+    <script src="{{ asset('client/js/owl.carousel.min.js')}}"></script>
+    <script src="{{ asset('client/js/main.js')}}"></script>
+{{ asset('')}}
+
 </body>
+
 </html>
