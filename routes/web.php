@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\ProductCategoryController as AdminProductCategoryController;
+use App\Http\Controllers\Client\NguoiDungController;
 use App\Http\Controllers\ProductCategoryController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\TestController;
@@ -31,17 +32,17 @@ Route::get('test', function (){
 
 Route::get('user/index', function (){
     return "<h1>List User</h1>";
-}); 
+});
 
-// Router + Controller + Action 
+// Router + Controller + Action
 Route::get('test/index' , [TestController::class ,'index']);
-Route::get('test/detail' , [TestController::class ,'detail']); 
+Route::get('test/detail' , [TestController::class ,'detail']);
 
-//muon no tu dong thi phai cho vao {{}} 
+//muon no tu dong thi phai cho vao {{}}
 //Router dynamic paramter
-Route::get('user/detail/{id?}/{test}' , [TestController::class,'show']); 
+Route::get('user/detail/{id?}/{test}' , [TestController::class,'show']);
 
-// Router  return view 
+// Router  return view
 Route::get('/', function(){
     return view('welcome');
 });
@@ -53,10 +54,11 @@ Route::get('list_user' , function(){
 Route::get('list_category' , [ProductCategoryController::class, 'index']);
 Route::get('admin/list_category' , [AdminProductCategoryController::class, 'index']);
 
-Route::get('list_user_blade' ,[ProductController::class,'index']); 
+Route::get('list_user_blade' ,[ProductController::class,'index']);
+
 Route::get('home' , function(){
     return view('client.pages.home');
-});
+})->name('home');
 Route::get('blog_details' , function(){
     return view('client.pages.blog-details');
 });
@@ -93,8 +95,17 @@ Route::get('admin/user' , function(){
 Route::get('admin/blog' , function(){
     return view('admin.pages.blog');
 });
-//kien thuc cu phap name 
+//kien thuc cu phap name
 Route::get('admin/product' , function(){
     return view('admin.pages.blog');
 })->name('admin.product');
+Route::get('register' , function(){
+    return view('client.pages.register');
+});
+Route::get('login' , function(){
+    return view('client.pages.login');
+});
+Route::post('dangnhap' , [NguoiDungController::class,'loginuser'])->name('nguoidung.dangnhap');
+
+Route::post('luunguoidung' , [NguoiDungController::class,'saveuser'])->name('nguoidung.dangky');
 
