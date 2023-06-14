@@ -28,6 +28,22 @@ class NguoiDungController extends Controller
         ->with('message','Sign Up Success');
     }
     public function loginuser(Request $request){
-        dd($request->all());
+        //validate 
+        $request->validate([
+            'email'=>'required|email',
+            'password'=>'required',
+        ]);
+        //Save to database
+        $result=DB::select('SELECT * FROM user WHERE email = ? ',[$request->email]);
+        if(count($result) && Hash::check($request->password ,$result[0]->password)){
+            session()->push('user',['id'=> $result[0]->id,'email'=>$result[0]->email,'name'=>$result[0]->name]);
+            return redirect()->route('home');
+        }
+        return back()->with('error','Email | Password khong dung');
+    }
+    public function logoutUser(){
+        // session()->flush();
+        session()->forget('user');
+        return redirect()->route('home');
     }
 }

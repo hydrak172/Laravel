@@ -28,8 +28,23 @@
                             </ul>
                         </div>
                         <div class="header__top__right__auth">
-                            <a href="#"><i class="fa fa-user"></i> Login</a>
+                            @php
+                                $user = session()->get('user');
+                                $name = $user[0]['name'] ?? 'Login';
+                            @endphp
+                            <a href="#"><i class="fa fa-user"></i>{{$name}}</a>
+                            @if (session()->has('user'))
+                                <a href="#" onclick="event.preventDefault(); document.getElementById('frm-logout').submit();">
+                                    <i class="fa fa-sign-out" aria-hidden="true">
+                                        <b>Logout</b>
+                                    </i>
+                                </a>
+                                <form action="{{route('nguoidung.dangxuat')}}" id='frm-logout' method="POST">
+                                    @csrf
+                                </form>
+                            @endif
                         </div>
+
                     </div>
                 </div>
             </div>
